@@ -1,0 +1,57 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Set up project structure and HTML scaffold": [
+      {
+        "executionId": "49be623f-5f6f-4edd-ba3f-1f654cff1b6a",
+        "chatSessionId": "sess_f4dc5d15-d021-4dbb-aae5-809d663e05e8",
+        "timestamp": 1786160442940
+      },
+      {
+        "executionId": "49be623f-5f6f-4edd-ba3f-1f654cff1b6a",
+        "chatSessionId": "sess_f4dc5d15-d021-4dbb-aae5-809d663e05e8",
+        "timestamp": 1786160720825
+      }
+    ],
+    "2. Implement StorageManager module": [
+      {
+        "executionId": "b4c12cc8-84df-46be-a0e7-d526eb21bb5f",
+        "chatSessionId": "sess_03bdf3a3-8aac-479d-871b-fb10c73aae08",
+        "timestamp": 1786160754476
+      },
+      {
+        "executionId": "b4c12cc8-84df-46be-a0e7-d526eb21bb5f",
+        "chatSessionId": "sess_03bdf3a3-8aac-479d-871b-fb10c73aae08",
+        "timestamp": 1786161263239
+      }
+    ],
+    "3. Implement AppState module": [
+      {
+        "executionId": "3094aa7a-fd86-4b54-a4c2-ee41e4a5eed5",
+        "chatSessionId": "sess_7692cd23-2fce-40b0-8619-edc782d10a55",
+        "timestamp": 1786161317807
+      }
+    ],
+    "11. Implement transaction form component": [
+      {
+        "executionId": "f2c4028f-1754-4360-842b-c87f74450d97",
+        "chatSessionId": "sess_d2c8e51d-214b-4a7a-9715-2e2f5b9d2b35",
+        "timestamp": 1786162363689
+      }
+    ],
+    "12. Implement transaction history component": [
+      {
+        "executionId": "550df63e-82b8-46d6-b775-a3046825a20e",
+        "chatSessionId": "sess_01552e72-bd56-445b-8638-ac5963844c8f",
+        "timestamp": 1786162680806
+      }
+    ],
+    "17. Implement monthly summary view": [
+      {
+        "executionId": "37ab1222-66a0-4ef7-bb75-0ce51ac98f00",
+        "chatSessionId": "sess_3f26c147-2a80-493e-bd87-6163308a98b9",
+        "timestamp": 1786162881421
+      }
+    ]
+  }
+}

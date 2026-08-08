@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Expense & Budget Visualizer - Track your spending and manage your budget">
+    <meta name="theme-color" content="#007AFF">
+    <title>Expense & Budget Visualizer</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1 class="header__title">Expense & Budget Visualizer</h1>
+        <button class="header__theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            🌙
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Balance Display Section -->
+        <section class="balance-section" id="balanceSection">
+            <div class="balance-container">
+                <h2 class="balance__label">Current Balance</h2>
+                <div class="balance__display" id="balanceDisplay">
+                    <span class="balance__currency">$</span>
+                    <span class="balance__amount" id="balanceAmount">0.00</span>
+                </div>
+            </div>
+            <div class="balance-setup" id="balanceSetup">
+                <label for="initialBalanceInput" class="balance-setup__label">Set Initial Balance:</label>
+                <div class="balance-setup__input-group">
+                    <input 
+                        type="number" 
+                        id="initialBalanceInput" 
+                        class="balance-setup__input" 
+                        placeholder="Enter initial balance"
+                        min="0"
+                        step="0.01"
+                        aria-label="Initial balance amount"
+                    >
+                    <button class="balance-setup__button" id="setBalanceBtn" aria-label="Set initial balance">
+                        Set Balance
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction Form Section -->
+        <section class="form-section" id="formSection">
+            <h2 class="form-section__title">Add Transaction</h2>
+            <form class="transaction-form" id="transactionForm" novalidate>
+                <div class="form-group">
+                    <label for="amount" class="form-group__label">Amount *</label>
+                    <input 
+                        type="number" 
+                        id="amount" 
+                        class="form-group__input" 
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01"
+                        required
+                        aria-label="Transaction amount"
+                    >
+                    <span class="form-group__error" id="amountError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="category" class="form-group__label">Category *</label>
+                    <select id="category" class="form-group__select" required aria-label="Transaction category">
+                        <option value="">Select a category</option>
+                    </select>
+                    <span class="form-group__error" id="categoryError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="date" class="form-group__label">Date *</label>
+                    <input 
+                        type="date" 
+                        id="date" 
+                        class="form-group__input" 
+                        required
+                        aria-label="Transaction date"
+                    >
+                    <span class="form-group__error" id="dateError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="form-group__label">Description</label>
+                    <input 
+                        type="text" 
+                        id="description" 
+                        class="form-group__input" 
+                        placeholder="Optional description"
+                        maxlength="200"
+                        aria-label="Transaction description"
+                    >
+                    <span class="form-group__error" id="descriptionError"></span>
+                </div>
+
+                <button type="submit" class="form-section__submit-btn" aria-label="Add transaction">
+                    Add Transaction
+                </button>
+                <span class="form-section__error" id="formError"></span>
+            </form>
+        </section>
+
+        <!-- Filter and Sort Controls Section -->
+        <section class="controls-section" id="controlsSection">
+            <h2 class="controls-section__title">Sort & Filter</h2>
+            <div class="controls-group">
+                <div class="control-item">
+                    <label for="categoryFilter" class="control-item__label">Filter by Category:</label>
+                    <select id="categoryFilter" class="control-item__select" aria-label="Filter transactions by category">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label for="sortBy" class="control-item__label">Sort by:</label>
+                    <select id="sortBy" class="control-item__select" aria-label="Sort transactions by">
+                        <option value="date">Date</option>
+                        <option value="amount">Amount</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+
+                <div class="control-item">
+                    <label for="sortOrder" class="control-item__label">Order:</label>
+                    <select id="sortOrder" class="control-item__select" aria-label="Sort order">
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction History Section -->
+        <section class="history-section" id="historySection">
+            <h2 class="history-section__title">Transaction History</h2>
+            <div class="history-container" id="historyContainer">
+                <p class="history__empty-state" id="emptyState">
+                    No transactions recorded yet. Add one to get started!
+                </p>
+                <table class="transaction-table" id="transactionTable" role="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTableBody">
+                        <!-- Transactions will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Chart Section -->
+        <section class="chart-section" id="chartSection">
+            <h2 class="chart-section__title">Spending by Category</h2>
+            <div class="chart-container" id="chartContainer">
+                <p class="chart__empty-state" id="chartEmptyState">
+                    Add transactions to see spending breakdown
+                </p>
+                <canvas id="spendingChart" class="chart__canvas" width="400" height="300" aria-label="Spending by category chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Monthly Summary Section -->
+        <section class="monthly-section" id="monthlySectionContainer">
+            <h2 class="monthly-section__title">Monthly Summary</h2>
+            
+            <!-- Month Navigation -->
+            <div class="monthly-nav" id="monthlyNav">
+                <button class="monthly-nav__button monthly-nav__prev" id="prevMonthBtn" aria-label="Previous month">
+                    ← Previous
+                </button>
+                <div class="monthly-nav__display" id="monthDisplay">
+                    January 2024
+                </div>
+                <button class="monthly-nav__button monthly-nav__next" id="nextMonthBtn" aria-label="Next month">
+                    Next →
+                </button>
+            </div>
+            
+            <!-- Monthly Total Display -->
+            <div class="monthly-total" id="monthlyTotalContainer">
+                <div class="monthly-total__item">
+                    <span class="monthly-total__label">Total Spending</span>
+                    <span class="monthly-total__amount" id="monthlyTotalAmount">$0.00</span>
+                </div>
+            </div>
+            
+            <!-- Category Breakdown -->
+            <div class="monthly-breakdown" id="monthlyBreakdownContainer">
+                <h3 class="monthly-breakdown__title">Category Breakdown</h3>
+                <div class="monthly-breakdown__list" id="monthlyBreakdownList">
+                    <p class="monthly-breakdown__empty-state">
+                        No transactions for this month
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p class="footer__text">
+            &copy; 2024 Expense & Budget Visualizer. Track your expenses smartly.
+        </p>
+    </footer>
+
+    <!-- Error Notification (for app-level errors) -->
+    <div class="notification" id="notification" role="status" aria-live="polite">
+        <span id="notificationMessage"></span>
+    </div>
+
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/monthly-summary.test.js"></script>
+</body>
+</html>
